@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <title>Hangman</title>
+    <link rel="stylesheet" type="text/css" href="/index.css">
+  </head>
+  <body>
+
+    <h1>Welcome to Hangman!</h1>
+    <p>
+      Enter letters as guesses to try and uncover the secret word. The guesses will be limited to 6, so guess wisely!
+    </p>
+    <p>
+      Incorrect Guesses Left! <%= @number_of_guesses %>
+    </p>
+    <p>
+      Guessed Letters: <br>
+      <% @guesses.each {|g| %> <%= g %>  <% } %>
+    </p>
+    <p>
+      <%= @display %>
+    </p>
+
+  </body>
+
+  <form method="POST">
+    <p>
+      <% if !win? && !lose? %>
+        Enter a guess!
+        <input type='text' name='guess' />
+        <input type='submit' value='Guess!' />
+      <% end %>
+    </p>
+	</form>
+
+  <p>
+    <% if win? || lose? %>
+      <%= @message %>
+      <br>
+      <br>
+      Secret Word: <%= @secret_word %>
+      <br>
+      <br>
+      <a href="/" class="btn">Play again?</a>
+    <% end %>
+  </p>
+
+</html>
